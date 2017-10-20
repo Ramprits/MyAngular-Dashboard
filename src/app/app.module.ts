@@ -19,6 +19,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FielderrorsComponent } from './fielderrors/fielderrors.component';
 import { CustolerListComponent } from './components/customer/custoler-list/custoler-list.component';
 import { CustomerService } from './services/customer.service';
+import { ProductListComponent } from './components/product/product-list/product-list.component';
 
 
 const appRoutes: Routes = [
@@ -43,7 +44,8 @@ const appRoutes: Routes = [
     ProfileComponent,
     SettingsComponent,
     FielderrorsComponent,
-    CustolerListComponent
+    CustolerListComponent,
+    ProductListComponent
   ],
   imports: [
     BrowserModule,
