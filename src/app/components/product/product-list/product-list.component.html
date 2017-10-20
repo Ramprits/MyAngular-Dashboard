@@ -1,3 +1,9 @@
 <p-panel header="Product">
-  product-list works!
+  <p-dataTable #dt [value]="products" emptyMessage="No time entries found" [reorderableColumns]="true" [resizableColumns]="true"
+    [editable]="true" [paginator]="true" [rows]="10" [rowsPerPageOptions]="[5,10,15,20]" [pageLinks]="8">
+    <p-column selectionMode="multiple" styleClass="selectBoxColumn"></p-column>
+    <p-column field="name" header="Name" [editable]="true"></p-column>
+    <p-column field="productNumber" header="Product Number" [editable]="true"></p-column>
+    <p-column field="rowguid" header="Row Guid" [editable]="true"></p-column>
+  </p-dataTable>
 </p-panel>

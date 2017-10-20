@@ -19,6 +19,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FielderrorsComponent } from './fielderrors/fielderrors.component';
 import { CustomerService } from './services/customer.service';
 import { ProductListComponent } from './components/product/product-list/product-list.component';
+import { ProductService } from './services/product.service';
 
 
 const appRoutes: Routes = [
@@ -84,7 +85,7 @@ const appRoutes: Routes = [
     DragDropModule,
     GalleriaModule
   ],
-  providers: [ConfirmationService, CustomerService],
+  providers: [ConfirmationService, CustomerService, ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
