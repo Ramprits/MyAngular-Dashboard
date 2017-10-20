@@ -32,3 +32,4 @@ Go for it!
 - 2017-08-24 - Course officially released [here](https://app.pluralsight.com/courses/angular-apps-prime-ng)
 - 2017-08-24 - Bumped Deps to latest version (PrimeNG 4.1.3, Angular 4.3.6)
 
+"# MyAngular-Dashboard" 
