@@ -17,7 +17,6 @@ import { SettingsComponent } from './settings/settings.component';
 import { AlltimesComponent } from './alltimes/alltimes.component';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FielderrorsComponent } from './fielderrors/fielderrors.component';
-import { CustolerListComponent } from './components/customer/custoler-list/custoler-list.component';
 import { CustomerService } from './services/customer.service';
 import { ProductListComponent } from './components/product/product-list/product-list.component';
 
@@ -30,7 +29,7 @@ const appRoutes: Routes = [
   { path: "projects", component: ProjectsComponent },
   { path: "profile", component: ProfileComponent },
   { path: "settings", component: SettingsComponent },
-  { path: 'customers', component: CustolerListComponent },
+  { path: 'products', component: ProductListComponent },
 ];
 
 @NgModule({
@@ -44,7 +43,6 @@ const appRoutes: Routes = [
     ProfileComponent,
     SettingsComponent,
     FielderrorsComponent,
-    CustolerListComponent,
     ProductListComponent
   ],
   imports: [
