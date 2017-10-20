@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { UIChart } from "primeng/primeng";
 import { Observable } from "rxjs/Observable";
+import { Title } from '@angular/platform-browser';
 
 const DEFAULT_COLORS = ['#3366CC', '#DC3912', '#FF9900', '#109618', '#990099',
   '#3B3EAC', '#0099C6', '#DD4477', '#66AA00', '#B82E2E',
@@ -129,6 +130,8 @@ export class DashboardComponent implements AfterViewInit {
 
   }
 
-
+  constructor(private title: Title) {
+    this.title.setTitle('Dashboard List');
+  }
 
 }
