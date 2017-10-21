@@ -20,6 +20,8 @@ import { FielderrorsComponent } from './fielderrors/fielderrors.component';
 import { CustomerService } from './services/customer.service';
 import { ProductListComponent } from './components/product/product-list/product-list.component';
 import { ProductService } from './services/product.service';
+import { FruitComponent } from './components/fruits/fruit/fruit.component';
+import { FruitService } from './services/fruit.service';
 
 
 const appRoutes: Routes = [
@@ -31,6 +33,7 @@ const appRoutes: Routes = [
   { path: "profile", component: ProfileComponent },
   { path: "settings", component: SettingsComponent },
   { path: 'products', component: ProductListComponent },
+  { path: 'fruits', component: FruitComponent },
 ];
 
 @NgModule({
@@ -44,7 +47,8 @@ const appRoutes: Routes = [
     ProfileComponent,
     SettingsComponent,
     FielderrorsComponent,
-    ProductListComponent
+    ProductListComponent,
+    FruitComponent
   ],
   imports: [
     BrowserModule,
@@ -85,7 +89,7 @@ const appRoutes: Routes = [
     DragDropModule,
     GalleriaModule
   ],
-  providers: [ConfirmationService, CustomerService, ProductService],
+  providers: [ConfirmationService, CustomerService, ProductService, FruitService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
