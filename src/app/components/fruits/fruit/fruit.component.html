@@ -1,15 +1,16 @@
 <p-panel header="Fruits List">
-  <p-dataGrid [value]="fruits" [paginator]="true" [rows]="20">
+  <p-dataGrid [value]="fruits$ | async" [paginator]="true" [rows]="20" [lazy]="true">
     <p-header>
       List of fruits
     </p-header>
     <ng-template let-fruit pTemplate="item">
-      <div style="padding:3px;" class="ui-g-12 ui-md-3">
-        <p-panel [header]="fruit.name" height="200" [style]="{'text-align':'center'}">
-          <img src="{{fruit.imgPath}}" width="200">
+      <div style="padding:3px;" class="ui-g-12 ui-md-4 divHeight">
+        <p-panel [header]="fruit.name" [style]="{'text-align':'center'}" [toggleable]="true">
+          <img src="assets/FruitsImg/{{fruit.imgPath}}" width="200">
           <div class="fruit-detail">{{fruit.description}} </div>
         </p-panel>
       </div>
     </ng-template>
   </p-dataGrid>
+
 </p-panel>

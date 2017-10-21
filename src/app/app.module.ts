@@ -23,6 +23,10 @@ import { ProductService } from './services/product.service';
 import { FruitComponent } from './components/fruits/fruit/fruit.component';
 import { FruitService } from './services/fruit.service';
 
+import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { environment } from '../environments/environment';
+
 
 const appRoutes: Routes = [
   { path: "", redirectTo: "/dashboard", pathMatch: "full" },
@@ -87,7 +91,9 @@ const appRoutes: Routes = [
     ConfirmDialogModule,
     GrowlModule,
     DragDropModule,
-    GalleriaModule
+    GalleriaModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule.enablePersistence()
   ],
   providers: [ConfirmationService, CustomerService, ProductService, FruitService],
   bootstrap: [AppComponent]
