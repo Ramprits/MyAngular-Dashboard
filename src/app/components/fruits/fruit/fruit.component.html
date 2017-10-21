@@ -1,4 +1,5 @@
 <p-panel header="Fruits List">
+  <p-growl [(value)]="msgs"></p-growl>
   <p-dataGrid [value]="fruits$ | async" [paginator]="true" [rows]="20" [lazy]="true">
     <p-header>
       List of fruits

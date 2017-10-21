@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FruitService } from '../../../services/fruit.service';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs';
+import { Message } from 'primeng/primeng';
 
 @Component({
   selector: 'at-fruit',
@@ -10,6 +11,7 @@ import { Observable } from 'rxjs';
 })
 export class FruitComponent implements OnInit {
   fruits: any[];
+  msgs: Message[] = [];
   loading: boolean = false;
   fruitsCollectionRef: AngularFirestoreCollection<any>;
   fruits$: Observable<any[]>;
@@ -18,11 +20,10 @@ export class FruitComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.loading = true;
+
     this.fruitsCollectionRef = this.afs.collection<any>('fruits');
     this.fruits$ = this.fruitsCollectionRef.valueChanges();
-    // this.http.getFruits().subscribe(x => { this.fruits = x })
-    this.loading = false;
+    this.msgs.push({ severity: 'success', summary: 'Loaded sucessfully ', detail: 'Fruits List' });
   }
 
 }
