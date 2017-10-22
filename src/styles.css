@@ -4,7 +4,9 @@ body {
   margin: 0px;
   font-size: 1em !important;
 }
-
+.selectBoxColumn {
+  width: 43px;
+}
 .ui-panel-titlebar {
   background-color: #2F8EE5 !important;
   color: white !important;

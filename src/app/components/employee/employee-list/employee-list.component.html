@@ -1,0 +1,24 @@
+<p-panel header="Employee List">
+  <p-dataTable #dt [value]="employeesss | async" emptyMessage="No time entries found" [reorderableColumns]="true" [resizableColumns]="true"
+    [paginator]="true" [rows]="10" [globalFilter]="tableSearch" [rowsPerPageOptions]="[5,10,15,20]" [pageLinks]="8">
+    <p-column selectionMode="multiple" styleClass="selectBoxColumn"></p-column>
+    <p-column field="data.firstName" header="First Name" [sortable]="true"></p-column>
+    <p-column field="data.lastName" [sortable]="true" header="Last Name"></p-column>
+    <p-column field="data.email" [sortable]="true" header="Email Address"></p-column>
+    <p-column field="data.mobile" [sortable]="true" header="Mobile"></p-column>
+    <p-footer>
+      <label for="tableSearch">Search: </label>
+      <input id="tableSearch" #tableSearch type="text" placeholder="Search All The Things">
+      <button type="button" pButton icon="fa-table" label="Export" (click)="dt.exportCSV()" style="float:right;"></button>
+    </p-footer>
+  </p-dataTable>
+  <button pButton type="submit" (click)="AddEmployee()" label="Add Employee"></button>
+</p-panel>
+
+<hr>
+<input type="text" [(ngModel)]="firstName" name="firstName" placeholder="firstName..">
+<input [(ngModel)]="lastName" name="lastName" placeholder="lastName.." />
+<input [(ngModel)]="born" name="born" placeholder="born.." />
+<input [(ngModel)]="email" name="email" placeholder="email.." />
+<input [(ngModel)]="mobile" name="mobile" placeholder="mobile.." />
+<input type="submit" value="Add a Post" (click)="AddEmployee()">

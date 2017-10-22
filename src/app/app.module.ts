@@ -26,6 +26,8 @@ import { FruitService } from './services/fruit.service';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { environment } from '../environments/environment';
+import { EmployeeListComponent } from './components/employee/employee-list/employee-list.component';
+import { EmployeeService } from './services/employee.service';
 
 
 const appRoutes: Routes = [
@@ -34,7 +36,7 @@ const appRoutes: Routes = [
   { path: "alltimes", component: AlltimesComponent },
   { path: "timesheet", component: TimesheetComponent },
   { path: "projects", component: ProjectsComponent },
-  { path: "profile", component: ProfileComponent },
+  { path: "employees", component: EmployeeListComponent },
   { path: "settings", component: SettingsComponent },
   { path: 'products', component: ProductListComponent },
   { path: 'fruits', component: FruitComponent },
@@ -52,7 +54,8 @@ const appRoutes: Routes = [
     SettingsComponent,
     FielderrorsComponent,
     ProductListComponent,
-    FruitComponent
+    FruitComponent,
+    EmployeeListComponent
   ],
   imports: [
     BrowserModule,
@@ -95,7 +98,7 @@ const appRoutes: Routes = [
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule.enablePersistence()
   ],
-  providers: [ConfirmationService, CustomerService, ProductService, FruitService],
+  providers: [ConfirmationService, CustomerService, ProductService, FruitService, EmployeeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
