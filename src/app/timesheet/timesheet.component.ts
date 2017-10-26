@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { MenuItem, TreeNode, ConfirmationService, Message } from "primeng/primeng";
-import { SampleProjectsData } from "app/timesheet/sample.projects.data";
-import { SamplePeopleData } from "app/timesheet/sample.people.data";
+import { MenuItem, TreeNode, ConfirmationService, Message } from 'primeng/primeng';
+import { SampleProjectsData } from 'app/timesheet/sample.projects.data';
+import { SamplePeopleData } from 'app/timesheet/sample.people.data';
 
 declare var moment: any;
 
@@ -16,6 +16,7 @@ export enum PageNames {
 
 
 @Component({
+  // tslint:disable-next-line:component-selector
   selector: 'at-timesheet',
   templateUrl: './timesheet.component.html',
   styleUrls: ['./timesheet.component.css']
@@ -24,16 +25,16 @@ export class TimesheetComponent {
 
   private userTimeData = [
 
-    { day: "Monday", startTime: '9:00', endTime: '17:00', project: 'Agile Times', category: "Frontend" },
-    { day: "Tuesday", startTime: '9:00', endTime: '17:00', project: 'Payroll App', category: "Backend" },
-    { day: "Wednesday", startTime: '9:00', endTime: '17:00', project: 'Point of Sale App', category: "Operations" },
-    { day: "Thursday", startTime: '9:00', endTime: '17:00', project: 'Mobile App', category: "Planning" },
-    { day: "Friday", startTime: '9:00', endTime: '17:00', project: 'Agile Times', category: "Requirements" },
+    { day: 'Monday', startTime: '9:00', endTime: '17:00', project: 'Agile Times', category: 'Frontend' },
+    { day: 'Tuesday', startTime: '9:00', endTime: '17:00', project: 'Payroll App', category: 'Backend' },
+    { day: 'Wednesday', startTime: '9:00', endTime: '17:00', project: 'Point of Sale App', category: 'Operations' },
+    { day: 'Thursday', startTime: '9:00', endTime: '17:00', project: 'Mobile App', category: 'Planning' },
+    { day: 'Friday', startTime: '9:00', endTime: '17:00', project: 'Agile Times', category: 'Requirements' },
 
   ]
 
   daysOfWeek = [
-    "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"
+    'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'
   ]
 
   displayEditDialog = false;
@@ -43,10 +44,10 @@ export class TimesheetComponent {
   dialogPageIndex = PageNames.TimePage;
 
   dialogPages: MenuItem[] = [
-    { label: "Time" },
-    { label: "Project" },
-    { label: "Place" },
-    { label: "People" }
+    { label: 'Time' },
+    { label: 'Project' },
+    { label: 'Place' },
+    { label: 'People' }
   ];
 
   private headerConfig = {
@@ -59,7 +60,7 @@ export class TimesheetComponent {
     {
       title: 'Recent Work',
       start: moment().format(), // '2017-06-02 07:00:00'
-      end: moment().add(1, "hour").format()
+      end: moment().add(1, 'hour').format()
     }
   ]
 
@@ -74,10 +75,10 @@ export class TimesheetComponent {
   };
 
   private mapOverlays = [
-    new google.maps.Marker({ position: { lat: -35.3075, lng: 149.124417 }, title: "Canberra Office" }),
-    new google.maps.Marker({ position: { lat: -33.8688, lng: 151.2093 }, title: "Sydney Office" }),
-    new google.maps.Marker({ position: { lat: -37.813611, lng: 144.963056 }, title: "Melbourne Office" }),
-    new google.maps.Marker({ position: { lat: -28.016667, lng: 153.4 }, title: "Gold Coast Office" })
+    new google.maps.Marker({ position: { lat: -35.3075, lng: 149.124417 }, title: 'Canberra Office' }),
+    new google.maps.Marker({ position: { lat: -33.8688, lng: 151.2093 }, title: 'Sydney Office' }),
+    new google.maps.Marker({ position: { lat: -37.813611, lng: 144.963056 }, title: 'Melbourne Office' }),
+    new google.maps.Marker({ position: { lat: -28.016667, lng: 153.4 }, title: 'Gold Coast Office' })
   ];
 
   people = SamplePeopleData.people;
@@ -91,17 +92,19 @@ export class TimesheetComponent {
 
   getTimesForDay(tabName: string) {
     return this.userTimeData.filter((row) => {
-      return row.day == tabName;
+      return row.day === tabName;
     })
   }
 
-  day = "Monday";
-  dateAndMonth = moment().day(this.day).format("MMMM Do, YYYY");
+  // tslint:disable-next-line:member-ordering
+  day = 'Monday';
+  // tslint:disable-next-line:member-ordering
+  dateAndMonth = moment().day(this.day).format('MMMM Do, YYYY');
 
   onChangeTabs(event) {
-    let index = event.index;
+    const index = event.index;
     this.day = this.daysOfWeek[index];
-    this.dateAndMonth = moment().day(this.day).format("MMMM Do, YYYY");
+    this.dateAndMonth = moment().day(this.day).format('MMMM Do, YYYY');
   }
 
   cancelDialog() {
@@ -115,7 +118,7 @@ export class TimesheetComponent {
       },
       reject: () => {
         this.messages.push({ severity: 'warn', summary: 'Cancelled the Cancel', detail: 'Please continue your editing' });
-        console.log("False cancel. Just keep editing.");
+        console.log('False cancel. Just keep editing.');
       }
     });
 
@@ -124,8 +127,8 @@ export class TimesheetComponent {
 
   onMarkerClick(markerEvent) {
 
-    let markerTitle = markerEvent.overlay.title;
-    let markerPosition = markerEvent.overlay.position;
+    const markerTitle = markerEvent.overlay.title;
+    const markerPosition = markerEvent.overlay.position;
 
     alert(`You clicked on ${markerTitle} at ${markerPosition}`);
 

@@ -6,7 +6,7 @@ import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class FruitService {
-  _baseUrl: string = 'https://localhost:44366/api/Fruits';
+  _baseUrl = 'https://localhost:44366/api/Fruits';
   constructor(private http: Http) { }
   getFruits() {
     return this.http.get(this._baseUrl)

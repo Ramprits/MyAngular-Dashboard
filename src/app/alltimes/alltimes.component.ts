@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MenuItem, DataTable, LazyLoadEvent } from "primeng/primeng";
+import { MenuItem, DataTable, LazyLoadEvent } from 'primeng/primeng';
 import Dexie from 'dexie';
-import { Observable } from "rxjs";
+import { Observable } from 'rxjs';
 
 const MAX_EXAMPLE_RECORDS = 1000;
 
@@ -12,7 +12,7 @@ const MAX_EXAMPLE_RECORDS = 1000;
 })
 export class AlltimesComponent implements OnInit {
 
-  @ViewChild("dt") dt : DataTable;
+  @ViewChild('dt') dt: DataTable;
 
   db: Dexie;
 
@@ -35,7 +35,7 @@ export class AlltimesComponent implements OnInit {
 
   contextMenu: MenuItem[];
 
-  recordCount : number;
+  recordCount: number;
 
   constructor() {
     // for (let x = 0; x < 5; x++) {
@@ -72,11 +72,11 @@ export class AlltimesComponent implements OnInit {
 
   generateRandomUser(id: number) {
 
-    var names = ["Joe", "Mary", "Phil", "Karen", "Si", "Tim", "Rohit", "Jenny", "Kim", "Greg", "Danni"]
-    var allProjectNames = ['Payroll App', 'Mobile App', 'Agile Times'];
-    var allCategories = ['Frontend', 'Backend', 'Operations'];
+    const names = ['Joe', 'Mary', 'Phil', 'Karen', 'Si', 'Tim', 'Rohit', 'Jenny', 'Kim', 'Greg', 'Danni']
+    const allProjectNames = ['Payroll App', 'Mobile App', 'Agile Times'];
+    const allCategories = ['Frontend', 'Backend', 'Operations'];
 
-    let newUser = {
+    const newUser = {
       id: id,
       user: names[id % names.length],
       project: allProjectNames[id % allProjectNames.length],
@@ -92,21 +92,21 @@ export class AlltimesComponent implements OnInit {
   }
 
   getRecordCount(): Dexie.Promise<number> {
-    return this.db.table("timesheet").count();
+    return this.db.table('timesheet').count();
   }
 
    resetDatabase() {
 
-    let that = this;
+    const that = this;
 
     this.dt.loading = true;
 
-    this.db.table("timesheet").clear().then(() => {
-      console.log("Database Cleared");
+    this.db.table('timesheet').clear().then(() => {
+      console.log('Database Cleared');
       Observable.range(0, MAX_EXAMPLE_RECORDS).do(
         function (id) {
-          let randomUser = that.generateRandomUser(id);
-          that.db.table("timesheet").add(randomUser);
+          const randomUser = that.generateRandomUser(id);
+          that.db.table('timesheet').add(randomUser);
           if (id % 100 == 0) {
             that.getRecordCount().then((count) => {
               that.recordCount = count;
@@ -115,14 +115,14 @@ export class AlltimesComponent implements OnInit {
 
         },
         function (err) {
-          console.log("Do Error: %s", err);
+          console.log('Do Error: %s', err);
         },
         function () {
-          console.log("Do complete");
+          console.log('Do complete');
           that.dt.loading = false;
           that.dt.reset();
         }).subscribe(() => {
-          console.log("Finished Reset database");
+          console.log('Finished Reset database');
           that.getRecordCount().then((count) => {
             that.recordCount = count;
           })
@@ -134,18 +134,18 @@ export class AlltimesComponent implements OnInit {
 
     console.log(JSON.stringify(event));
 
-    let table = this.db.table("timesheet");
+    const table = this.db.table('timesheet');
 
-    var query: any;
+    let query: any;
 
     // Dexie doesn't support ordering AND filtering, so we branch here
     // Alternative strategies here: https://github.com/dfahlander/Dexie.js/issues/297
-    if (event.filters && event.filters["project"]) {
-      query = table.where("project").equals(event.filters["project"]["value"]);
+    if (event.filters && event.filters['project']) {
+      query = table.where('project').equals(event.filters['project']['value']);
     } else if (event.globalFilter) {
-      query = table.where("project").startsWithIgnoreCase(event.globalFilter)
-        .or("user").startsWithIgnoreCase(event.globalFilter)
-        .or("category").startsWithIgnoreCase(event.globalFilter);
+      query = table.where('project').startsWithIgnoreCase(event.globalFilter)
+        .or('user').startsWithIgnoreCase(event.globalFilter)
+        .or('category').startsWithIgnoreCase(event.globalFilter);
     } else {
       query = table.orderBy(event.sortField);
     }
@@ -186,8 +186,8 @@ export class AlltimesComponent implements OnInit {
 
 
   onEditComplete(editInfo) {
-    let fieldChanged = editInfo.column.field;
-    let newRowValues = editInfo.data;
+    const fieldChanged = editInfo.column.field;
+    const newRowValues = editInfo.data;
     alert(`You edited ${fieldChanged} to ${newRowValues[fieldChanged]}`);
   }
 

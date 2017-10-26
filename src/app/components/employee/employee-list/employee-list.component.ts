@@ -40,16 +40,16 @@ export class EmployeeListComponent implements OnInit {
   public mobile;
 
   AddEmployee() {
-    this.afs.collection("employees").add({
+    this.afs.collection('employees').add({
       'firstName': this.firstName,
       'lastName': this.lastName,
       'born': this.born,
       'email': this.email,
       'mobile': this.mobile
     }).then(function (docRef) {
-      console.log("Document written with ID: ", docRef.id);
+      console.log('Document written with ID: ', docRef.id);
     }).catch(function (error) {
-      console.error("Error adding document: ", error);
+      console.error('Error adding document: ', error);
     });
 
 

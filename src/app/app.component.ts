@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
-import { MenuItem } from "primeng/primeng";
-import { Menu } from "primeng/components/menu/menu";
-import { ActivatedRoute, Router } from "@angular/router";
+import { MenuItem } from 'primeng/primeng';
+import { Menu } from 'primeng/components/menu/menu';
+import { ActivatedRoute, Router } from '@angular/router';
 
 declare var jQuery: any;
 
@@ -24,12 +24,12 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
 
-    let handleSelected = function (event) {
-      let allMenus = jQuery(event.originalEvent.target).closest('ul');
-      let allLinks = allMenus.find('.menu-selected');
+    const handleSelected = function (event) {
+      const allMenus = jQuery(event.originalEvent.target).closest('ul');
+      const allLinks = allMenus.find('.menu-selected');
 
-      allLinks.removeClass("menu-selected");
-      let selected = jQuery(event.originalEvent.target).closest('a');
+      allLinks.removeClass('menu-selected');
+      const selected = jQuery(event.originalEvent.target).closest('a');
       selected.addClass('menu-selected');
     }
 
@@ -45,17 +45,17 @@ export class AppComponent implements OnInit, AfterViewInit {
 
     this.miniMenuItems = [];
     this.menuItems.forEach((item: MenuItem) => {
-      let miniItem = { icon: item.icon, routerLink: item.routerLink }
+      const miniItem = { icon: item.icon, routerLink: item.routerLink }
       this.miniMenuItems.push(miniItem);
     })
 
   }
 
   selectInitialMenuItemBasedOnUrl() {
-    let path = document.location.pathname;
-    let menuItem = this.menuItems.find((item) => { return item.routerLink[0] == path });
+    const path = document.location.pathname;
+    const menuItem = this.menuItems.find((item) => { return item.routerLink[0] == path });
     if (menuItem) {
-      let selectedIcon = this.bigMenu.container.querySelector(`.${menuItem.icon}`);
+      const selectedIcon = this.bigMenu.container.querySelector(`.${menuItem.icon}`);
       jQuery(selectedIcon).closest('li').addClass('menu-selected');
     }
   }

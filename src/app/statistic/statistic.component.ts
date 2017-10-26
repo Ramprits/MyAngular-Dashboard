@@ -7,8 +7,8 @@ import {Component, OnInit, Input} from '@angular/core';
 })
 export class StatisticComponent implements OnInit {
 
-  @Input() icon : string;
-  @Input() label : string;
+  @Input() icon: string;
+  @Input() label: string;
   @Input() value: string;
   @Input() colour: string;
 
