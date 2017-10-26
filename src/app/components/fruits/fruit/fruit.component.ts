@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FruitService } from '../../../services/fruit.service';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
+// tslint:disable-next-line:import-blacklist
 import { Observable } from 'rxjs';
 import { Message } from 'primeng/primeng';
 
