@@ -1,8 +1,11 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
-import { MenuItem } from 'primeng/primeng';
+import { MenuItem, MenuModule } from 'primeng/primeng';
 import { Menu } from 'primeng/components/menu/menu';
 import { ActivatedRoute, Router } from '@angular/router';
-
+import { AuthService } from './components/auth/auth.service';
+import { Observable } from 'rxjs/Observable';
+import { AngularFireAuth } from 'angularfire2/auth';
+import * as firebase from 'firebase/app';
 declare var jQuery: any;
 
 @Component({
@@ -17,11 +20,15 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   @ViewChild('bigMenu') bigMenu: Menu;
   @ViewChild('smallMenu') smallMenu: Menu;
-
-  constructor(private router: Router) {
-
+  menuVisible: boolean = true;
+  constructor(private router: Router, public authService: AuthService) {
   }
-
+  userLogin() {
+    this.authService.login();
+  }
+  userLogOut() {
+    this.authService.logout();
+  }
   ngOnInit() {
 
     const handleSelected = function (event) {
@@ -34,13 +41,14 @@ export class AppComponent implements OnInit, AfterViewInit {
     }
 
     this.menuItems = [
-      { label: 'Dashboard', icon: 'fa-home', routerLink: ['/dashboard'], command: (event) => handleSelected(event) },
-      { label: 'All Times', icon: 'fa-calendar', routerLink: ['/alltimes'], command: (event) => handleSelected(event) },
-      { label: 'Fruit', icon: 'fa-clock-o', routerLink: ['/fruits'], command: (event) => handleSelected(event) },
-      { label: 'Add Project', icon: 'fa-tasks', routerLink: ['/projects'], command: (event) => handleSelected(event) },
-      { label: 'Employee', icon: 'fa-users', routerLink: ['/employees'], command: (event) => handleSelected(event) },
-      { label: 'Settings', icon: 'fa-sliders', routerLink: ['/settings'], command: (event) => handleSelected(event) },
-      { label: 'Product', icon: 'fa-empire', routerLink: ['/products'], command: (event) => handleSelected(event) },
+      { label: 'Dashboard', icon: 'fa-home', routerLink: ['/dashboard'], command: (event) => handleSelected(event), visible: !this.menuVisible },
+      { label: 'All Times', icon: 'fa-calendar', routerLink: ['/alltimes'], command: (event) => handleSelected(event), visible: this.menuVisible },
+      { label: 'Fruit', icon: 'fa-clock-o', routerLink: ['/fruits'], command: (event) => handleSelected(event), visible: this.menuVisible },
+      { label: 'Add Project', icon: 'fa-tasks', routerLink: ['/projects'], command: (event) => handleSelected(event), visible: this.menuVisible },
+      { label: 'Employee', icon: 'fa-users', routerLink: ['/employees'], command: (event) => handleSelected(event), visible: this.menuVisible },
+      { label: 'Settings', icon: 'fa-sliders', routerLink: ['/settings'], command: (event) => handleSelected(event), visible: this.menuVisible },
+      { label: 'Product', icon: 'fa-empire', routerLink: ['/products'], command: (event) => handleSelected(event), visible: this.menuVisible },
+      { label: 'Google Login', icon: 'fa-google', routerLink: ['/products'], command: (event) => handleSelected(event), visible: this.menuVisible },
     ]
 
     this.miniMenuItems = [];

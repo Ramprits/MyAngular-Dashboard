@@ -58,18 +58,20 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { environment } from '../environments/environment';
 import { EmployeeListComponent } from './components/employee/employee-list/employee-list.component';
 import { EmployeeService } from './services/employee.service';
-
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AuthService } from './components/auth/auth.service';
+import { AuthGuard } from './components/auth/auth.guard';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'dashboard', component: DashboardComponent },
-  { path: 'alltimes', component: AlltimesComponent },
-  { path: 'timesheet', component: TimesheetComponent },
-  { path: 'projects', component: ProjectsComponent },
-  { path: 'employees', component: EmployeeListComponent },
-  { path: 'settings', component: SettingsComponent },
-  { path: 'products', component: ProductListComponent },
-  { path: 'fruits', component: FruitComponent },
+  { path: 'alltimes', component: AlltimesComponent, canActivate: [AuthGuard] },
+  { path: 'timesheet', component: TimesheetComponent, canActivate: [AuthGuard] },
+  { path: 'projects', component: ProjectsComponent, canActivate: [AuthGuard] },
+  { path: 'employees', component: EmployeeListComponent, canActivate: [AuthGuard] },
+  { path: 'settings', component: SettingsComponent, canActivate: [AuthGuard] },
+  { path: 'products', component: ProductListComponent, canActivate: [AuthGuard] },
+  { path: 'fruits', component: FruitComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({
@@ -97,6 +99,7 @@ const appRoutes: Routes = [
     MenuModule,
     PanelModule,
     ChartModule,
+    AngularFireAuthModule,
     InputTextModule,
     ButtonModule,
     InputMaskModule,
@@ -128,7 +131,7 @@ const appRoutes: Routes = [
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule.enablePersistence()
   ],
-  providers: [ConfirmationService, CustomerService, ProductService, FruitService, EmployeeService],
+  providers: [ConfirmationService, AuthGuard, AuthService, CustomerService, ProductService, FruitService, EmployeeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
