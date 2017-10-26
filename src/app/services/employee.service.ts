@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
-import { IEmployee } from '../../shared/Interface';
+import { IEmployee } from 'app/shared/Interface';
 
 @Injectable()
 export class EmployeeService {

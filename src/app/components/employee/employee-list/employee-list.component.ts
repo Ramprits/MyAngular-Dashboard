@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from '../../../services/employee.service';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
-import { IEmployee } from '../../../../shared/Interface';
+import { IEmployee } from 'app/shared/Interface';
 
 @Component({
+  // tslint:disable-next-line:component-selector
   selector: 'at-employee-list',
   templateUrl: './employee-list.component.html',
   styleUrls: ['./employee-list.component.css']
