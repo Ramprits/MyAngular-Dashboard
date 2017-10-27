@@ -20,7 +20,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   @ViewChild('bigMenu') bigMenu: Menu;
   @ViewChild('smallMenu') smallMenu: Menu;
-  menuVisible: boolean = true;
+  menuVisible = true;
   constructor(private router: Router, public authService: AuthService) {
   }
   userLogin() {
