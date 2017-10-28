@@ -15,43 +15,45 @@
   <button pButton type="submit" (click)="AddEmployee()" label="Add Employee"></button>
 </p-panel>
 
-<hr>
-<div class="field">
-  <label class="label">Fisrt Name</label>
-  <div class="control">
-    <input class="input" type="text" [(ngModel)]="firstName" name="firstName" placeholder="firstName..">
+<p-panel header="Add Employee">
+  <div class="field">
+    <label class="label">Fisrt Name</label>
+    <div class="control">
+      <input class="input" type="text" [(ngModel)]="firstName" name="firstName" placeholder="firstName..">
+    </div>
   </div>
-</div>
 
-<div class="field">
-  <label class="label">Last Name</label>
-  <div class="control">
-    <input class="input" [(ngModel)]="lastName" name="lastName" placeholder="lastName.." />
+  <div class="field">
+    <label class="label">Last Name</label>
+    <div class="control">
+      <input class="input" [(ngModel)]="lastName" name="lastName" placeholder="lastName.." />
+    </div>
   </div>
-</div>
 
 
-<div class="field">
-  <label class="label">Last Name</label>
-  <div class="control">
-    <input class="input" [(ngModel)]="born" name="born" placeholder="born.." />
+  <div class="field">
+    <label class="label">Last Name</label>
+    <div class="control">
+      <input class="input" [(ngModel)]="born" name="born" placeholder="born.." />
+    </div>
   </div>
-</div>
 
-<div class="field">
-  <label class="label">Email </label>
-  <div class="control">
-    <input class="input" [(ngModel)]="email" name="email" placeholder="email.." />
+  <div class="field">
+    <label class="label">Email </label>
+    <div class="control">
+      <input class="input" [(ngModel)]="email" name="email" placeholder="email.." />
 
+    </div>
   </div>
-</div>
 
 
-<div class="field">
-  <label class="label">Email </label>
-  <div class="control">
-    <input class="input" [(ngModel)]="mobile" name="mobile" placeholder="mobile.." />
+  <div class="field">
+    <label class="label">Email </label>
+    <div class="control">
+      <input class="input" [(ngModel)]="mobile" name="mobile" placeholder="mobile.." />
 
+    </div>
   </div>
-</div>
-<button class="button" type="submit" (click)="AddEmployee()">Add Post</button>
+  <button class="button is-primary" type="submit" (click)="AddEmployee()">Add Post</button>
+</p-panel>
+
