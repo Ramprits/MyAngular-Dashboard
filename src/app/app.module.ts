@@ -87,8 +87,7 @@ const appRoutes: Routes = [
     FielderrorsComponent,
     ProductListComponent,
     FruitComponent,
-    EmployeeListComponent,
-    AddEmployeeComponent
+    EmployeeListComponent
   ],
   imports: [
     BrowserModule,
