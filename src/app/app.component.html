@@ -8,7 +8,7 @@
     <div *ngIf="!(authService.user$ | async)?.uid">
       <button pButton (click)="userLogin()" label="Login"></button>
     </div>
-    <div *ngIf="(authService.user$ | async)?.uid" >
+    <div *ngIf="(authService.user$ | async)?.uid">
       <button pButton (click)="userLogOut()" label="Logout"></button>
     </div>
   </div>
@@ -19,9 +19,7 @@
   <div class="ui-g-2 ui-g-nopad" id="sidegutter">
 
     <div id="sidenav">
-      <div *ngIf="(authService.user$ | async)?.uid">
-        <p-menu #bigMenu [model]="menuItems"></p-menu>
-      </div>
+      <p-menu #bigMenu [model]="menuItems"></p-menu>
 
     </div>
 
