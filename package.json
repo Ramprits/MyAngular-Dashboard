@@ -25,6 +25,7 @@
     "@angular/platform-browser-dynamic": "4.3.6",
     "@angular/router": "4.3.6",
     "angularfire2": "^5.0.0-rc.3",
+    "bulma": "^0.6.0",
     "chart.js": "2.7.0",
     "core-js": "2.5.0",
     "dexie": "^1.5.1",

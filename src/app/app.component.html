@@ -6,10 +6,14 @@
   </div>
   <div class="ui-g-2" id="notifications">
     <div *ngIf="!(authService.user$ | async)?.uid">
-      <button pButton (click)="userLogin()" label="Login"></button>
+      <button class="button is-white is-small is-pulled-right" (click)="userLogin()">Login</button>
     </div>
     <div *ngIf="(authService.user$ | async)?.uid">
+<<<<<<< HEAD
       <button pButton (click)="userLogOut()" label="Logout"></button>
+=======
+      <button class="button is-white is-small is-pulled-right" (click)="userLogOut()">Logout</button>
+>>>>>>> deafb17280f01ef9bb46b96249d9d296c6a16eb8
     </div>
   </div>
 </div>
@@ -20,6 +24,10 @@
 
     <div id="sidenav">
       <p-menu #bigMenu [model]="menuItems"></p-menu>
+<<<<<<< HEAD
+=======
+
+>>>>>>> deafb17280f01ef9bb46b96249d9d296c6a16eb8
     </div>
 
   </div>
@@ -43,8 +51,8 @@
 
 
   <div id="content-body" class="ui-g-10 ui-g-nopad">
-
-    <router-outlet></router-outlet>
-
+    <div class="container">
+      <router-outlet></router-outlet>
+    </div>
   </div>
 </div>
