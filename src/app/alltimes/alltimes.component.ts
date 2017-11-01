@@ -107,7 +107,7 @@ export class AlltimesComponent implements OnInit {
         function (id) {
           const randomUser = that.generateRandomUser(id);
           that.db.table('timesheet').add(randomUser);
-          if (id % 100 == 0) {
+          if (id % 100 === 0) {
             that.getRecordCount().then((count) => {
               that.recordCount = count;
             })
@@ -192,7 +192,7 @@ export class AlltimesComponent implements OnInit {
   }
 
   onRowSelect(rowInfo) {
-    //console.log(JSON.stringify(rowInfo.data)); // or this.selectedRow
+    // console.log(JSON.stringify(rowInfo.data)); // or this.selectedRow
   }
 
 

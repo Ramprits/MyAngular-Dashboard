@@ -15,4 +15,22 @@ export class EmployeeService {
     this.afs.collection('employees');
     this.employeeRef.valueChanges();
   }
+
+  addEmployee(employee: Employee) {
+    this.afs.collection('employees').add({
+      'firstName': employee.firstName,
+      'lastName': employee.lastName,
+      'born': employee.born,
+      'email': employee.email,
+      'mobile': employee.mobile
+    }).then(function (docRef) {
+      console.log('Document written with ID: ', docRef.id);
+    }).catch(function (error) {
+      console.error('Error adding document: ', error);
+    });
+
+  }
+}
+export class Employee {
+  constructor(public firstName: '', public lastName: '', public born: '', public email: '', public mobile: '') { }
 }
