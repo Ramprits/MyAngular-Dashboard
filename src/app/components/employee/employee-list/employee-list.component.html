@@ -16,8 +16,8 @@
 </p-panel>
 
 <hr>
-<form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm.value)" *ngIf="newEmployee">
-  <p-panel header="Add Employee" class="ui-g-12">
+<p-dialog header="Add New Employee" [(visible)]="newEmployee" [width]="700">
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm.value)">
     <div class="ui-g">
       <label for="firstName" class="ui-g-12 ui-md-2">First Name*</label>
       <input formControlName="firstName" class="ui-g-12 ui-md-5" pInputText name="firstName" placeholder="firstName..">
@@ -59,8 +59,8 @@
     </div>
     <div class="ui-g">
       <div class="ui-g-12 ui-md-4 ui-md-offset-6">
-        <input pButton type="button" class="ui-button-success" value="Save">
+        <input type="submit" pButton class="ui-button-success" value="Save">
       </div>
     </div>
-  </p-panel>
-</form>
+  </form>
+</p-dialog>

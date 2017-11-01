@@ -4,6 +4,7 @@ import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/fires
 import { Observable } from 'rxjs/Observable';
 import { IEmployee } from 'app/shared/Interface';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -23,11 +24,13 @@ export class EmployeeListComponent implements OnInit {
   employeeRef: AngularFirestoreCollection<IEmployee>;
   employees: Observable<IEmployee[]>;
   employeesss: any;
-  constructor(
+  constructor(private title: Title,
     private employeeService: EmployeeService,
     private afs: AngularFirestore,
     public fb: FormBuilder
-  ) { }
+  ) {
+    this.title.setTitle('Employee List');
+  }
   ngOnInit() {
     this.getEmployees();
     this.myForm = this.fb.group({

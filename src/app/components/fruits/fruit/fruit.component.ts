@@ -4,6 +4,7 @@ import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/fires
 // tslint:disable-next-line:import-blacklist
 import { Observable } from 'rxjs';
 import { Message } from 'primeng/primeng';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -17,8 +18,8 @@ export class FruitComponent implements OnInit {
   loading = false;
   fruitsCollectionRef: AngularFirestoreCollection<any>;
   fruits$: Observable<any[]>;
-  constructor(private http: FruitService, private afs: AngularFirestore) {
-
+  constructor(private title: Title, private http: FruitService, private afs: AngularFirestore) {
+this.title.setTitle('Fruits List');
   }
 
   ngOnInit() {
