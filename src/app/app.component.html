@@ -2,54 +2,28 @@
 
   <div class="ui-g-10">
     <h2>Dhanai Fruits Marts</h2>
-    <!-- <img src="assets/img/logo-clear.svg" id="top-logo"/> -->
   </div>
   <div class="ui-g-2" id="notifications">
     <div *ngIf="!(authService.user$ | async)?.uid">
       <button class="button is-white is-small is-pulled-right" (click)="userLogin()">Login</button>
     </div>
     <div *ngIf="(authService.user$ | async)?.uid">
-<<<<<<< HEAD
-      <button pButton (click)="userLogOut()" label="Logout"></button>
-=======
-      <button class="button is-white is-small is-pulled-right" (click)="userLogOut()">Logout</button>
->>>>>>> deafb17280f01ef9bb46b96249d9d296c6a16eb8
+      <button pButton (click)="userLogOut()" label="Logout">
+      </button>
     </div>
   </div>
 </div>
-
 <div class="ui-g ui-g-nopad">
-
   <div class="ui-g-2 ui-g-nopad" id="sidegutter">
-
     <div id="sidenav">
       <p-menu #bigMenu [model]="menuItems"></p-menu>
-<<<<<<< HEAD
-=======
-
->>>>>>> deafb17280f01ef9bb46b96249d9d296c6a16eb8
     </div>
-
   </div>
-
   <div class="ui-g-2 ui-g-nopad" id="minigutter">
-
     <div id="sidenav-mini">
-
       <p-menu #smallMenu [model]="miniMenuItems"></p-menu>
-
     </div>
-
   </div>
-
-  <!--
-  <div class="ui black big launch right attached fixed button">
-    <i class="content icon"></i>
-    <span class="text">Menu</span>
-  </div>
-  -->
-
-
   <div id="content-body" class="ui-g-10 ui-g-nopad">
     <div class="container">
       <router-outlet></router-outlet>

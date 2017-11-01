@@ -90,12 +90,8 @@ const appRoutes: Routes = [
     FielderrorsComponent,
     ProductListComponent,
     FruitComponent,
-<<<<<<< HEAD
     EmployeeListComponent,
     CustomerListComponent
-=======
-    EmployeeListComponent
->>>>>>> deafb17280f01ef9bb46b96249d9d296c6a16eb8
   ],
   imports: [
     BrowserModule,
