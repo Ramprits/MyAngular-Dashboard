@@ -20,7 +20,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   @ViewChild('bigMenu') bigMenu: Menu;
   @ViewChild('smallMenu') smallMenu: Menu;
-  menuVisible = true;
+  menuVisible = false;
   constructor(private router: Router, public authService: AuthService) {
   }
   userLogin() {
@@ -43,9 +43,9 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.menuItems = [
       { label: 'Dashboard', icon: 'fa-home', routerLink: ['/dashboard'], command: (event) => handleSelected(event), visible: !this.menuVisible },
       { label: 'All Times', icon: 'fa-calendar', routerLink: ['/alltimes'], command: (event) => handleSelected(event), visible: this.menuVisible },
-      { label: 'Fruit', icon: 'fa-clock-o', routerLink: ['/fruits'], command: (event) => handleSelected(event), visible: this.menuVisible },
+      { label: 'Fruit', icon: 'fa-clock-o', routerLink: ['/fruits'], command: (event) => handleSelected(event), visible: !this.menuVisible },
       { label: 'Add Project', icon: 'fa-tasks', routerLink: ['/projects'], command: (event) => handleSelected(event), visible: this.menuVisible },
-      { label: 'Employee', icon: 'fa-users', routerLink: ['/employees'], command: (event) => handleSelected(event), visible: this.menuVisible },
+      { label: 'Employee', icon: 'fa-users', routerLink: ['/employees'], command: (event) => handleSelected(event), visible: !this.menuVisible },
       { label: 'Settings', icon: 'fa-sliders', routerLink: ['/settings'], command: (event) => handleSelected(event), visible: this.menuVisible },
       { label: 'Product', icon: 'fa-empire', routerLink: ['/products'], command: (event) => handleSelected(event), visible: this.menuVisible },
       { label: 'Google Login', icon: 'fa-google', routerLink: ['/products'], command: (event) => handleSelected(event), visible: this.menuVisible },

@@ -4,11 +4,11 @@
     <h2>Dhanai Fruits Marts</h2>
   </div>
   <div class="ui-g-2" id="notifications">
-    <div *ngIf="!(authService.user$ | async)?.uid">
-      <button class="button is-white is-small is-pulled-right" (click)="userLogin()">Login</button>
+    <div *ngIf="!(authService.user$ | async)?.uid" style="float: right">
+      <button pButton (click)="userLogin()" label="Google Login"></button>
     </div>
-    <div *ngIf="(authService.user$ | async)?.uid">
-      <button pButton (click)="userLogOut()" label="Logout">
+    <div *ngIf="(authService.user$ | async)?.uid" style="float: right">
+      <button pButton (click)="userLogOut()" label="Google Logout">
       </button>
     </div>
   </div>
