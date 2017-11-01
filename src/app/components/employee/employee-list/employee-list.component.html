@@ -1,66 +1,60 @@
 <p-panel header="Employee List" *ngIf="!newEmployee">
-  <p-dataTable #dt [value]="employeesss | async" emptyMessage="No time entries found" [reorderableColumns]="true" [resizableColumns]="true"
-    [paginator]="true" [rows]="10" [globalFilter]="tableSearch" [rowsPerPageOptions]="[5,10,15,20]" [pageLinks]="8">
+  <p-dataTable #dt [value]="employeesss |  async" [loading]="loading" emptyMessage="No time entries found" [reorderableColumns]="true"
+    [resizableColumns]="true" [paginator]="true" [rows]="10" [globalFilter]="tableSearch" [rowsPerPageOptions]="[5,10,15,20]"
+    [pageLinks]="8">
     <p-column selectionMode="multiple" styleClass="selectBoxColumn"></p-column>
     <p-column field="data.firstName" header="First Name" [sortable]="true"></p-column>
     <p-column field="data.lastName" [sortable]="true" header="Last Name"></p-column>
     <p-column field="data.email" [sortable]="true" header="Email Address"></p-column>
     <p-column field="data.mobile" [sortable]="true" header="Mobile"></p-column>
     <p-footer>
+      <button pButton type="submit" (click)="Add()" label="{{newEmployeButtonName ? 'Hide Employee' : 'Add Employee'}}" style="float:left;"></button>
       <label for="tableSearch">Search: </label>
       <input id="tableSearch" #tableSearch type="text" placeholder="Search All The Things">
       <button type="button" pButton icon="fa-table" label="Export" (click)="dt.exportCSV()" style="float:right;"></button>
     </p-footer>
   </p-dataTable>
-  <button pButton type="submit" (click)="Add()" label="{{newEmployeButtonName ? 'Hide Employee' : 'Add Employee'}}"></button>
 </p-panel>
-
-<hr>
-<p-dialog header="Add New Employee" [(visible)]="newEmployee" [width]="700">
+<p-dialog header="Add New Employee" [(visible)]="newEmployee" [width]="900" [responsive]="true">
   <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm.value)">
     <div class="ui-g">
       <label for="firstName" class="ui-g-12 ui-md-2">First Name*</label>
-      <input formControlName="firstName" class="ui-g-12 ui-md-5" pInputText name="firstName" placeholder="firstName..">
-      <div class="ui-g-12 ui-md-5">
+      <input formControlName="firstName" class="ui-g-12 ui-md-7" pInputText name="firstName" placeholder="First Name..">
+      <div class="ui-g-12 ui-md-3">
         <at-fielderrors [form]="myForm" field="firstName" nicename="First Name"> </at-fielderrors>
       </div>
     </div>
-
     <div class="ui-g">
       <label for="lastName" class="ui-g-12 ui-md-2">Last Name*</label>
-      <input formControlName="lastName" class="ui-g-12 ui-md-5" name="lastName" pInputText placeholder="lastName.." />
-      <div class="ui-g-12 ui-md-5">
+      <input formControlName="lastName" class="ui-g-12 ui-md-7" name="lastName" pInputText placeholder="Last Name.." />
+      <div class="ui-g-12 ui-md-3">
         <at-fielderrors [form]="myForm" field="lastName" nicename="Last Name"> </at-fielderrors>
       </div>
     </div>
-
     <div class="ui-g">
       <label for="born" class="ui-g-12 ui-md-2">DOB*</label>
-      <input formControlName="born" name="born" class="ui-g-12 ui-md-5" pInputText placeholder="born.." />
-      <div class="ui-g-12 ui-md-5">
+      <input formControlName="born" name="born" class="ui-g-12 ui-md-7" pInputText placeholder="Born.." />
+      <div class="ui-g-12 ui-md-3">
         <at-fielderrors [form]="myForm" field="born" nicename="DOB"> </at-fielderrors>
       </div>
     </div>
-
     <div class="ui-g">
       <label for="email" class="ui-g-12 ui-md-2">Email Address*</label>
-      <input formControlName="email" name="email" class="ui-g-12 ui-md-5" pInputText placeholder="email.." />
-      <div class="ui-g-12 ui-md-5">
+      <input formControlName="email" name="email" class="ui-g-12 ui-md-7" pInputText placeholder="Email.." />
+      <div class="ui-g-12 ui-md-3">
         <at-fielderrors [form]="myForm" field="email" nicename="Email Address"> </at-fielderrors>
       </div>
     </div>
-
     <div class="ui-g">
       <label for="mobile" class="ui-g-12 ui-md-2">Mobile*</label>
-      <input formControlName="mobile" name="mobile" class="ui-g-12 ui-md-5" pInputText placeholder="mobile.." />
-      <div class="ui-g-12 ui-md-5">
+      <input formControlName="mobile" name="mobile" class="ui-g-12 ui-md-7" pInputText placeholder="mobile.." />
+      <div class="ui-g-12 ui-md-3">
         <at-fielderrors [form]="myForm" field="mobile" nicename="Mobile"> </at-fielderrors>
       </div>
     </div>
-    <div class="ui-g">
-      <div class="ui-g-12 ui-md-4 ui-md-offset-6">
-        <input type="submit" pButton class="ui-button-success" value="Save">
-      </div>
-    </div>
+    <p-footer>
+      <input type="submit" style="float: right" pButton class="ui-button-success" value="Save">
+      <input type="reset" style="float: right" pButton class="ui-button-danger" (click)="cancel()" value="Cancel">
+    </p-footer>
   </form>
 </p-dialog>

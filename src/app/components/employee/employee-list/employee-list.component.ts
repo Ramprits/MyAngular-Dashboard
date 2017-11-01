@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { IEmployee } from 'app/shared/Interface';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -14,6 +15,7 @@ import { Title } from '@angular/platform-browser';
 })
 export class EmployeeListComponent implements OnInit {
   newEmployee: boolean;
+  loading: boolean;
   public firstName: '';
   public lastName: '';
   public born: '';
@@ -27,7 +29,7 @@ export class EmployeeListComponent implements OnInit {
   constructor(private title: Title,
     private employeeService: EmployeeService,
     private afs: AngularFirestore,
-    public fb: FormBuilder
+    public fb: FormBuilder, private router: Router
   ) {
     this.title.setTitle('Employee List');
   }
@@ -48,15 +50,20 @@ export class EmployeeListComponent implements OnInit {
   getEmployees() {
     this.employeeRef = this.afs.collection('employees');
     this.employees = this.employeeRef.valueChanges();
-
+    this.loading = true;
     this.employeesss = this.employeeRef.snapshotChanges()
       .map(actions => {
         return actions.map(a => {
           const data = a.payload.doc.data() as IEmployee;
           const id = a.payload.doc.id;
           return { id, data };
+
         });
       });
+    this.loading = false;
+  }
+  cancel() {
+    this.router.navigate(['/dashboard']);
   }
   onSubmit(newEmployee) {
     console.log(newEmployee);
