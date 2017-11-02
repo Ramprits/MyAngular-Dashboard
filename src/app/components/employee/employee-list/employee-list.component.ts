@@ -24,8 +24,7 @@ export class EmployeeListComponent implements OnInit {
   myForm: FormGroup;
   newEmployeButtonName = false;
   employeeRef: AngularFirestoreCollection<IEmployee>;
-  employees: Observable<IEmployee[]>;
-  employeesss: any;
+  employees: any;
   constructor(private title: Title,
     private employeeService: EmployeeService,
     private afs: AngularFirestore,
@@ -36,11 +35,11 @@ export class EmployeeListComponent implements OnInit {
   ngOnInit() {
     this.getEmployees();
     this.myForm = this.fb.group({
-      firstName: ['', [Validators.required]],
-      lastName: ['', [Validators.required]],
-      born: ['', [Validators.required]],
+      firstName: ['', [Validators.required, Validators.minLength(4)]],
+      lastName: ['', [Validators.required, Validators.minLength(4)]],
+      born: ['', [Validators.required, Validators.minLength(4)]],
       email: ['', [Validators.required]],
-      mobile: ['', [Validators.required]],
+      mobile: ['', [Validators.required, Validators.minLength(10)]],
     });
   }
   Add() {
@@ -49,20 +48,20 @@ export class EmployeeListComponent implements OnInit {
   }
   getEmployees() {
     this.employeeRef = this.afs.collection('employees');
-    this.employees = this.employeeRef.valueChanges();
     this.loading = true;
-    this.employeesss = this.employeeRef.snapshotChanges()
+    this.employees = this.employeeRef.snapshotChanges()
       .map(actions => {
         return actions.map(a => {
           const data = a.payload.doc.data() as IEmployee;
           const id = a.payload.doc.id;
           return { id, data };
 
-        });
+        }, (error) => { console.error('There are some : ', { error }) });
       });
     this.loading = false;
   }
-  cancel() {
+  cancel(): void {
+    this.myForm.reset();
     this.router.navigate(['/dashboard']);
   }
   onSubmit(newEmployee) {

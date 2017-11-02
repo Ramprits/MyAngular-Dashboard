@@ -1,7 +1,7 @@
 <p-panel header="Employee List" *ngIf="!newEmployee">
-  <p-dataTable #dt [value]="employeesss |  async" [loading]="loading" emptyMessage="No time entries found" [reorderableColumns]="true"
-    [resizableColumns]="true" [paginator]="true" [rows]="10" [globalFilter]="tableSearch" [rowsPerPageOptions]="[5,10,15,20]"
-    [pageLinks]="8">
+  <p-dataTable #dt [value]="employees |  async" [loading]="loading" emptyMessage="No time entries found" [reorderableColumns]="true"
+    [resizableColumns]="true" [scrollable]="true" loadingIcon="fa-spinner" [paginator]="true" [rows]="10" [globalFilter]="tableSearch"
+    [rowsPerPageOptions]="[5,10,15,20]" [pageLinks]="8">
     <p-column selectionMode="multiple" styleClass="selectBoxColumn"></p-column>
     <p-column field="data.firstName" header="First Name" [sortable]="true"></p-column>
     <p-column field="data.lastName" [sortable]="true" header="Last Name"></p-column>
@@ -18,43 +18,58 @@
 <p-dialog header="Add New Employee" [(visible)]="newEmployee" [width]="900" [responsive]="true">
   <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm.value)">
     <div class="ui-g">
-      <label for="firstName" class="ui-g-12 ui-md-2">First Name*</label>
+      <label for="firstName" class="ui-g-12 ui-md-2">First Name
+        <em>*</em>
+      </label>
       <input formControlName="firstName" class="ui-g-12 ui-md-7" pInputText name="firstName" placeholder="First Name..">
       <div class="ui-g-12 ui-md-3">
         <at-fielderrors [form]="myForm" field="firstName" nicename="First Name"> </at-fielderrors>
       </div>
     </div>
     <div class="ui-g">
-      <label for="lastName" class="ui-g-12 ui-md-2">Last Name*</label>
+      <label for="lastName" class="ui-g-12 ui-md-2">Last Name
+        <em>*</em>
+      </label>
       <input formControlName="lastName" class="ui-g-12 ui-md-7" name="lastName" pInputText placeholder="Last Name.." />
       <div class="ui-g-12 ui-md-3">
         <at-fielderrors [form]="myForm" field="lastName" nicename="Last Name"> </at-fielderrors>
       </div>
     </div>
     <div class="ui-g">
-      <label for="born" class="ui-g-12 ui-md-2">DOB*</label>
+      <label for="born" class="ui-g-12 ui-md-2">Date Of Birth
+        <em>*</em>
+      </label>
       <input formControlName="born" name="born" class="ui-g-12 ui-md-7" pInputText placeholder="Born.." />
       <div class="ui-g-12 ui-md-3">
         <at-fielderrors [form]="myForm" field="born" nicename="DOB"> </at-fielderrors>
       </div>
     </div>
+
     <div class="ui-g">
-      <label for="email" class="ui-g-12 ui-md-2">Email Address*</label>
-      <input formControlName="email" name="email" class="ui-g-12 ui-md-7" pInputText placeholder="Email.." />
+      <label for="email" class="ui-g-12 ui-md-2">Email Address
+        <em>*</em>
+      </label>
+      <input formControlName="email" type="email" name="email" class="ui-g-12 ui-md-7" pInputText placeholder="Email.." />
       <div class="ui-g-12 ui-md-3">
         <at-fielderrors [form]="myForm" field="email" nicename="Email Address"> </at-fielderrors>
       </div>
     </div>
     <div class="ui-g">
-      <label for="mobile" class="ui-g-12 ui-md-2">Mobile*</label>
+      <label for="mobile" class="ui-g-12 ui-md-2">Mobile
+        <em>*</em>
+      </label>
       <input formControlName="mobile" name="mobile" class="ui-g-12 ui-md-7" pInputText placeholder="mobile.." />
       <div class="ui-g-12 ui-md-3">
         <at-fielderrors [form]="myForm" field="mobile" nicename="Mobile"> </at-fielderrors>
       </div>
     </div>
     <p-footer>
-      <input type="submit" style="float: right" pButton class="ui-button-success" value="Save">
-      <input type="reset" style="float: right" pButton class="ui-button-danger" (click)="cancel()" value="Cancel">
+      <div class="ui-g">
+        <div class="ui-md-6 ui-md-offset-4">
+          <input type="submit" style="float: right" pButton class="ui-button-success" value="Save">
+          <input type="reset" style="float: right" pButton class="ui-button-danger" (click)="cancel()" value="Cancel">
+        </div>
+      </div>
     </p-footer>
   </form>
 </p-dialog>
