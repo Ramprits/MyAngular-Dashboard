@@ -65,7 +65,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   selectInitialMenuItemBasedOnUrl() {
     const path = document.location.pathname;
-    const menuItem = this.menuItems.find((item) => { return item.routerLink[0] == path });
+    const menuItem = this.menuItems.find((item) => { return item.routerLink[0] === path });
     if (menuItem) {
       const selectedIcon = this.bigMenu.container.querySelector(`.${menuItem.icon}`);
       jQuery(selectedIcon).closest('li').addClass('menu-selected');
