@@ -41,12 +41,16 @@ export class AppComponent implements OnInit, AfterViewInit {
     }
 
     this.menuItems = [
+      // tslint:disable-next-line:max-line-length
       { label: 'Dashboard', icon: 'fa-home', routerLink: ['/dashboard'], command: (event) => handleSelected(event), visible: !this.menuVisible },
       { label: 'All Times', icon: 'fa-calendar', routerLink: ['/alltimes'], command: (event) => handleSelected(event), visible: this.menuVisible },
+      // tslint:disable-next-line:max-line-length
       { label: 'Fruit', icon: 'fa-clock-o', routerLink: ['/fruits'], command: (event) => handleSelected(event), visible: !this.menuVisible },
       { label: 'Add Project', icon: 'fa-tasks', routerLink: ['/projects'], command: (event) => handleSelected(event), visible: this.menuVisible },
+      // tslint:disable-next-line:max-line-length
       { label: 'Employee', icon: 'fa-users', routerLink: ['/employees'], command: (event) => handleSelected(event), visible: !this.menuVisible },
       { label: 'Settings', icon: 'fa-sliders', routerLink: ['/settings'], command: (event) => handleSelected(event), visible: this.menuVisible },
+      // tslint:disable-next-line:max-line-length
       { label: 'Product', icon: 'fa-empire', routerLink: ['/products'], command: (event) => handleSelected(event), visible: this.menuVisible },
       { label: 'Google Login', icon: 'fa-google', routerLink: ['/products'], command: (event) => handleSelected(event), visible: this.menuVisible },
     ]
